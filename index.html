@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getComputerChoise() {
+            let a = Math.floor(Math.random() * 10) - 1  
+            if (a <= 2) {
+                return 'paper'
+            }
+            else if (a <= 5) {
+                return 'rock'
+            }
+            else {
+                return 'scissors'
+            }
+        }
+        function getHumainChoise() {
+            return prompt("Choose Between Paper,Rock,Scissors")
+        }
+        function playRound(computerChoise, humainChoise) {
+            if (computerChoise === humainChoise) {
+                humainScore = humainScore + 1;
+                computerScore = computerScore + 1;
+                return ("It's Tie")
+            }
+
+            if ((computerChoise === 'rock' && humainChoise === 'scissors') || 
+            (computerChoise === 'paper' && humainChoise === 'rock') ||
+            (computerChoise === 'scissors' && humainChoise === 'paper')) {
+                computerScore = computerScore + 1
+                return (`You lose ${computerChoise} beat ${humainChoise}`)
+            }
+
+            if ((computerChoise === 'scissors' && humainChoise === 'rock') || 
+            (computerChoise === 'rock' && humainChoise === 'paper') || 
+            (computerChoise === 'paper' && humainChoise === 'scissors')) {
+                humainScore = humainScore + 1
+                return (`You Won ${humainChoise} beat ${computerChoise}`)
+            }
+
+        }
+        function playGame(computerChoise, humainChoise) {
+            let result = playRound(computerChoise, humainChoise)
+            console.log(result)
+        }
+
+        let humainScore = 0
+        let computerScore = 0
+        let computerChoise = getComputerChoise().toLowerCase()
+        let humainChoise = getHumainChoise().toLowerCase()
+        playGame(computerChoise, humainChoise)
+
+        computerChoise = getComputerChoise().toLowerCase()
+        humainChoise = getHumainChoise().toLowerCase()
+        playGame(computerChoise, humainChoise)
+
+        computerChoise = getComputerChoise().toLowerCase()
+        humainChoise = getHumainChoise().toLowerCase()
+        playGame(computerChoise, humainChoise)
+
+        computerChoise = getComputerChoise().toLowerCase()
+        humainChoise = getHumainChoise().toLowerCase()
+        playGame(computerChoise, humainChoise)
+
+        computerChoise = getComputerChoise().toLowerCase()
+        humainChoise = getHumainChoise().toLowerCase()
+        playGame(computerChoise, humainChoise)
+
+        if (humainScore > computerScore) {
+            console.log(`You Won ${humainScore} - ${computerScore}`)
+        }
+        else {
+            console.log(`You Lose ${computerScore} - ${humainScore}`)
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
