@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+</head>
+<body>
+    <p id="score">Humain 0 - 0 Computer</p>
+    <div>
+        <button id="rock">rock</button>
+        <button id="paper">paper</button>
+        <button id="scissors">scissors</button>
+    </div>
+    <p id="result"></p>
+
     <script>
         function getComputerChoise() {
             let a = Math.floor(Math.random() * 10) - 1  
@@ -17,6 +28,7 @@
                 return 'scissors'
             }
         }
+
         function getHumainChoise() {
             return prompt("Choose Between Paper,Rock,Scissors")
         }
@@ -44,41 +56,30 @@
         }
         function playGame(computerChoise, humainChoise) {
             let result = playRound(computerChoise, humainChoise)
-            console.log(result)
+            const show = document.getElementById("result")
+            show.textContent = result
+            const score = document.getElementById("score")
+            score.textContent = `Humain ${humainScore} - ${computerScore} Computer`
+            if (humainScore == 5) {
+            alert("You Won!")
+            }
+        if (computerScore == 5) {
+            alert("You Lose!")
+            }
         }
 
         let humainScore = 0
         let computerScore = 0
-        let computerChoise = getComputerChoise().toLowerCase()
-        let humainChoise = getHumainChoise().toLowerCase()
-        playGame(computerChoise, humainChoise)
 
-        computerChoise = getComputerChoise().toLowerCase()
-        humainChoise = getHumainChoise().toLowerCase()
-        playGame(computerChoise, humainChoise)
+        const rock = document.getElementById("rock");
+        const paper = document.getElementById("paper");
+        const scissors = document.getElementById("scissors");
 
-        computerChoise = getComputerChoise().toLowerCase()
-        humainChoise = getHumainChoise().toLowerCase()
-        playGame(computerChoise, humainChoise)
-
-        computerChoise = getComputerChoise().toLowerCase()
-        humainChoise = getHumainChoise().toLowerCase()
-        playGame(computerChoise, humainChoise)
-
-        computerChoise = getComputerChoise().toLowerCase()
-        humainChoise = getHumainChoise().toLowerCase()
-        playGame(computerChoise, humainChoise)
-
-        if (humainScore > computerScore) {
-            console.log(`You Won ${humainScore} - ${computerScore}`)
-        }
-        else {
-            console.log(`You Lose ${computerScore} - ${humainScore}`)
-        }
+        
+        rock.addEventListener('click', () => playGame(getComputerChoise(), rock.textContent))
+        paper.addEventListener('click', () => playGame(getComputerChoise(), paper.textContent))
+        scissors.addEventListener('click', () => playGame(getComputerChoise(), scissors.textContent))
 
     </script>
-</head>
-<body>
-    
 </body>
 </html>
